@@ -61,9 +61,9 @@ class AbstractModel
     {
         $trace = debug_backtrace();
         if (isset($trace[1])) {
-            $prefix = substr(md5($trace[1]['class']), 0, 5);
+            $prefix = isset($this->prefix) ? $this->prefix : substr(md5($trace[1]['class']), 0, 5);
             $className = explode('\\', $trace[1]['class']);
-            $tableName = strtolower(end($className));
+            $tableName = isset($this->name) ? $this->name : strtolower(end($className));
         }
 
         global $wpdb;
