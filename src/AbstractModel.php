@@ -4,7 +4,7 @@ namespace Beycan\Moodel;
 
 /**
  * @author BeycanDeveloper
- * @version 1.2.1
+ * @version 1.2.2
  * @link https://beycanpress.com
  * 
  * Our abstract model class that will allow users to create their own models and use auxiliary database processing methods
@@ -76,7 +76,7 @@ class AbstractModel
                 $tableName = isset($this->name) ? $this->name : strtolower(end($className));
             }
     
-            $prefix = $wpdb->prefix . $prefix . '_';
+            $prefix = $wpdb->prefix . ($prefix ? $prefix . '_' : null);
             $this->tableName = $prefix . $tableName;
         }
     }
