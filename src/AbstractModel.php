@@ -70,9 +70,9 @@ class AbstractModel
 
         if (is_null($this->tableName)) {
             $trace = debug_backtrace();
-            if (isset($trace[1])) {
-                $prefix = isset($this->prefix) ? $this->prefix : substr(md5($trace[1]['class']), 0, 5);
-                $className = explode('\\', $trace[1]['class']);
+            if (isset($trace[2])) {
+                $prefix = isset($this->prefix) ? $this->prefix : substr(md5($trace[2]['class']), 0, 5);
+                $className = explode('\\', $trace[2]['class']);
                 $tableName = isset($this->name) ? $this->name : strtolower(end($className));
             }
     
